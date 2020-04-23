@@ -108,5 +108,31 @@ namespace Movies
             }
             return results;
         }
+        public static IEnumerable<Movie> FilterByRottenTomatoes(IEnumerable<Movie> movies, double? min, double? max)
+        {
+            if (min == null && max == null) return movies;
+            var results = new List<Movie>();
+            if (min == null)
+            {
+                foreach (Movie movie in movies)
+                {
+                    if (movie.RottenTomatoesRating <= max) results.Add(movie);
+                }
+                return results;
+            }
+            if (max == null)
+            {
+                foreach (Movie movie in movies)
+                {
+                    if (movie.RottenTomatoesRating >= min) results.Add(movie);
+                }
+                return results;
+            }
+            foreach (Movie movie in movies)
+            {
+                if (movie.RottenTomatoesRating >= min && movie.RottenTomatoesRating <= max) results.Add(movie);
+            }
+            return results;
+        }
     }
 }
