@@ -34,5 +34,7 @@ namespace Movies
         /// Gets or sets the rotten tomatoes rating of the movie
         /// </summary>
         public float? RottenTomatoesRating { get; set; }
+
+        
     }
 }
