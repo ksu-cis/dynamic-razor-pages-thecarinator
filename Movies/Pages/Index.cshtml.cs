@@ -27,15 +27,19 @@ namespace Movies.Pages
         public double? TomatoesMax { get; set; }
         public void OnGet()
         {
-            Movies= MovieDatabase.All;
+            Movies = MovieDatabase.All;
+            if (SearchTerms != null) Movies.Where(movie => movie.Title != null && movie.Title.Contains(SearchTerms, StringComparison.InvariantCultureIgnoreCase));
+            if (MPAARatings != null && MPAARatings.Length != 0) Movies = Movies.Where(movie => movie.MPAARating != null && MPAARatings.Contains(movie.MPAARating));
         }
         public void OnPost()
         {
-            Movies = MovieDatabase.Search(SearchTerms);
+            /* Movies = MovieDatabase.Search(SearchTerms);
             Movies = MovieDatabase.FilterByMPAARating(Movies, MPAARatings);
             Movies = MovieDatabase.FilterByGenre(Movies, Genres);
             Movies = MovieDatabase.FilterByIMDBRating(Movies, IMDBMin, IMDBMax);
-            Movies = MovieDatabase.FilterByRottenTomatoes(Movies, TomatoesMin, TomatoesMax);
+            Movies = MovieDatabase.FilterByRottenTomatoes(Movies, TomatoesMin, TomatoesMax);*/
+
+ 
 
         }
     }

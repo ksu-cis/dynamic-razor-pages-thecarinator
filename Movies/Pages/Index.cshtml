@@ -3,10 +3,10 @@
 @{
     ViewData["Title"] = "Home page";
 }
-    <form id="movie-database" method="post">
+    <form id="movie-database" method="get">
         <div id="search">
             <input type="text" name="SearchTerms" value="@Model.SearchTerms" />
-            <input type="submit" value="Search">
+            <input type="submit" value="Search"/>
         </div>
 
         <div id="filters">
